@@ -1,8 +1,3 @@
-const res = st1 => parseOp(st1)
-operr = res("8%3")
-console.log(`4+2 is ${parseOp("4+2")}`)
-console.log(`2^8 is ${res("2^8")}`)
-
 const opAdd = (left, right) => left+right
 const opSubtract = (left, right) => left-right
 const opMultiply = (left, right) => left*right
@@ -10,11 +5,16 @@ const opDivide = (left, right) => left/right
 const opExp = (left, right) => left^right
 const opMod = (left, right) => left%right
 
+const expr = "8+3"
+operr = evaluate(expr)
+console.log(`${expr} is ${operr}`)
+
 function parseOp(st) {
     if (st.length<3){
         return opAdd
     }
-    switch (st.charAt(1)) {
+    ch=st.charAt(1)
+    switch (ch) {
         case '+':
             return opAdd
         case '-':
@@ -27,13 +27,12 @@ function parseOp(st) {
             return opExp
         case '%':
             return opMod
-            
     }
-    return opAdds
+    return opAdd
 }
 function evaluate(str) {
-    resz = st1 => parseOp(st1)
+    rett = parseOp(str)
     le=parseInt(str.substring(0,1))
     ri=parseInt(str.substring(2))
-    return resz(le,ri)
+    return rett(le,ri)
 }
